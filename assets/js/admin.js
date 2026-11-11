@@ -134,7 +134,7 @@
     $('f-excerpt-en').value = p.excerpt_en || '';
   }
 
-  function newPost() {
+  function newPost(withFeedback) {
     state.slug = null;
     state.originalSlug = null;
     fillMeta({ date: today() });
@@ -143,7 +143,22 @@
     markActive(null);
     renderPreview();
     setDirty(false);
-    tip('新文章：填好标题和 slug 就能保存。');
+    tip(withFeedback ? '已新建空白文章：填好标题和 slug 就能保存。' : '新文章：填好标题和 slug 就能保存。');
+
+    if (!withFeedback) return;
+
+    // 可见反馈: 闪一下表单 + 滚到顶部 + 光标落到标题框
+    var card = document.querySelector('.meta-card');
+    var title = $('f-title');
+    if (card) {
+      card.classList.remove('flash');
+      void card.offsetWidth;
+      card.classList.add('flash');
+      if (card.scrollIntoView) card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    if (title) {
+      try { title.focus({ preventScroll: true }); } catch (e) { title.focus(); }
+    }
   }
 
   function openPost(slug) {
@@ -500,7 +515,7 @@
     bindToolbar();
     $('btn-new').addEventListener('click', function () {
       if (state.dirty && !confirm('有未保存的改动，确定新建吗？')) return;
-      newPost();
+      newPost(true);
     });
     $('btn-save').addEventListener('click', saveToDisk);
 

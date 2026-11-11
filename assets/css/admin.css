@@ -127,6 +127,16 @@ body { background: var(--paper-2); }
   padding: 20px;
   margin-bottom: 20px;
 }
+.meta-card.flash {
+  animation: card-flash .7s var(--ease);
+}
+@keyframes card-flash {
+  0%   { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent); }
+  100% { border-color: var(--line); box-shadow: 0 0 0 0 transparent; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .meta-card.flash { animation: none; border-color: var(--accent); }
+}
 .grid-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
