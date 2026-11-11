@@ -1,0 +1,78 @@
+[
+  {
+    "slug": "welcome",
+    "title": "在留白处落笔",
+    "title_en": "Writing Into the White Space",
+    "date": "2026-09-01",
+    "tags": [
+      "随想",
+      "开篇"
+    ],
+    "tags_en": [
+      "Notes",
+      "Opening"
+    ],
+    "excerpt": "开一个极简个人志，不为涨粉，只为给思考留一块不被算法催促的空地。",
+    "excerpt_en": "Starting a minimal journal — not for an audience, but to keep a patch of ground where thought is not hurried by an algorithm."
+  },
+  {
+    "slug": "silence",
+    "title": "读一本不说话的书",
+    "title_en": "Reading a Book That Says Nothing",
+    "date": "2026-08-22",
+    "tags": [
+      "阅读",
+      "随笔"
+    ],
+    "tags_en": [
+      "Reading",
+      "Essays"
+    ],
+    "excerpt": "有些书的价值不在它说了什么，而在它替你留出了一段沉默，让你听见自己的声音。",
+    "excerpt_en": "Some books are valuable not for what they say, but for the silence they leave you — long enough to hear your own voice."
+  },
+  {
+    "slug": "static-blog",
+    "title": "用纯静态站搭一个博客",
+    "title_en": "Building a Blog With Nothing But Static Files",
+    "date": "2026-08-10",
+    "tags": [
+      "技术"
+    ],
+    "tags_en": [
+      "Craft"
+    ],
+    "excerpt": "零依赖、自包含、丢个 .md 就能发文——一个最小可用的静态博客是怎么搭起来的。",
+    "excerpt_en": "Zero dependencies, self-contained, drop in a .md and publish — how a minimal static blog is put together."
+  },
+  {
+    "slug": "perspective",
+    "title": "没有真相，只有视角",
+    "title_en": "No Truth, Only Perspective",
+    "date": "2026-07-28",
+    "tags": [
+      "哲思",
+      "随想"
+    ],
+    "tags_en": [
+      "Philosophy",
+      "Notes"
+    ],
+    "excerpt": "我们以为在争论事实，其实常常只是在交换各自站位的视角。视角不是 relativism，是一种清醒。",
+    "excerpt_en": "We think we are arguing about facts, when often we are only exchanging the views from where we stand. Perspective is not relativism; it is a form of clarity."
+  },
+  {
+    "slug": "tea",
+    "title": "一杯茶的留白",
+    "title_en": "The White Space in a Cup of Tea",
+    "date": "2026-07-15",
+    "tags": [
+      "生活"
+    ],
+    "tags_en": [
+      "Daily life"
+    ],
+    "excerpt": "泡茶最难的不是放多少茶叶，而是肯不肯等。等水凉到合适的温度，等自己静下来。",
+    "excerpt_en": "The hardest part of making tea is not how much leaf to use, but whether you are willing to wait — for the water to cool, and for yourself to settle."
+  }
+]

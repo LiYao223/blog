@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n-title="title.about">关于 · 空山</title>
+  <meta name="description" content="关于空山 · 极简个人志" data-i18n-desc="desc.about">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div id="progress"></div>
+
+  <header class="site-header">
+    <nav>
+      <a href="index.html" class="brand">空山<small>KONGSHAN</small></a>
+      <div class="nav-links">
+        <a href="index.html" data-i18n="nav.posts">文章</a>
+        <a href="tags.html" data-i18n="nav.tags">标签</a>
+        <a href="about.html" class="active" data-i18n="nav.about">关于</a>
+        <button id="lang-toggle" class="lang-toggle" aria-label="切换语言" title="切换语言">EN</button>
+        <button id="theme-toggle" aria-label="切换主题" title="切换主题">☾</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap about">
+    <div class="avatar">空</div>
+    <p class="who" data-i18n="about.eyebrow">ABOUT · 关 于 这 里</p>
+    <article class="prose reveal" id="about-root">
+      <p class="empty" data-i18n="about.loading">正在载入…</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <span data-i18n="footer">空山 · 以静写心 · © 2026</span>
+  </footer>
+
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/markdown.js"></script>
+  <script src="assets/js/site.js"></script>
+  <script src="assets/js/about.js"></script>
+</body>
+</html>

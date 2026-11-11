@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>写作 · 空山</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body>
+  <header class="admin-bar">
+    <a href="index.html" class="brand">空山<small>KONGSHAN</small></a>
+    <span class="bar-title">写 作 台</span>
+    <div class="bar-right">
+      <span class="save-state" id="save-state">就绪</span>
+      <span class="mode-badge" id="mode-badge" hidden></span>
+      <button id="theme-toggle" aria-label="切换主题" title="切换主题">☾</button>
+      <a class="ghost-link" href="index.html">返回站点</a>
+    </div>
+  </header>
+
+  <div class="admin-shell">
+    <!-- 左: 文章列表 -->
+    <aside class="admin-side">
+      <button class="btn primary block" id="btn-new">＋ 新建文章</button>
+      <div class="side-label">已有文章</div>
+      <ul class="side-list" id="post-list-admin">
+        <li class="side-empty">正在载入…</li>
+      </ul>
+      <div class="side-note">
+        <p><strong>怎么写</strong><br>左边改字，右边即时预览。标题、标签这些填在上方表单里，<code>index.json</code> 会自动更新，不用手改。</p>
+        <p><strong>怎么存</strong><br>点「写入文件」后选中 <code>blog</code> 文件夹，浏览器就会直接把文件写回硬盘。Safari / Firefox 不支持时，用「下载」按钮拿回文件手动覆盖。</p>
+      </div>
+    </aside>
+
+    <!-- 右: 编辑区 -->
+    <main class="admin-main">
+      <section class="meta-card">
+        <div class="grid-2">
+          <label class="field">
+            <span>标题</span>
+            <input type="text" id="f-title" placeholder="一杯茶的留白">
+          </label>
+          <label class="field">
+            <span>文件名 slug</span>
+            <input type="text" id="f-slug" placeholder="my-first-post">
+          </label>
+          <label class="field">
+            <span>日期</span>
+            <input type="date" id="f-date">
+          </label>
+          <label class="field">
+            <span>标签<span class="hint">逗号分隔</span></span>
+            <input type="text" id="f-tags" placeholder="随想, 生活">
+          </label>
+        </div>
+        <label class="field">
+          <span>摘要<span class="hint">显示在文章卡片上</span></span>
+          <textarea id="f-excerpt" rows="2" placeholder="一句话，说清这篇在讲什么。"></textarea>
+        </label>
+
+        <details class="en-block">
+          <summary>英文版本（可选，留空自动回退中文）</summary>
+          <div class="grid-2">
+            <label class="field"><span>Title</span><input type="text" id="f-title-en"></label>
+            <label class="field"><span>Tags<span class="hint">顺序对应上方</span></span><input type="text" id="f-tags-en" placeholder="Notes, Daily life"></label>
+          </div>
+          <label class="field"><span>Excerpt</span><textarea id="f-excerpt-en" rows="2"></textarea></label>
+        </details>
+      </section>
+
+      <section class="editor-card">
+        <div class="toolbar" id="toolbar">
+          <button data-act="h2" title="二级标题">H2</button>
+          <button data-act="h3" title="三级标题">H3</button>
+          <button data-act="bold" title="加粗"><b>B</b></button>
+          <button data-act="italic" title="斜体"><i>I</i></button>
+          <button data-act="strike" title="删除线"><s>S</s></button>
+          <span class="sep"></span>
+          <button data-act="quote" title="引用">引</button>
+          <button data-act="ul" title="无序列表">列</button>
+          <button data-act="ol" title="有序列表">序</button>
+          <button data-act="code" title="行内代码">`</button>
+          <button data-act="fence" title="代码块">块</button>
+          <span class="sep"></span>
+          <button data-act="link" title="链接">链</button>
+          <button data-act="hr" title="分割线">—</button>
+          <span class="spacer"></span>
+          <span class="counter" id="counter">0 字</span>
+        </div>
+
+        <div class="panes">
+          <textarea id="editor" class="editor-input" spellcheck="false" placeholder="在这里开始写……&#10;&#10;正文用 ## 起手，一级标题不用写，页面会显示上面的“标题”。"></textarea>
+          <div class="editor-preview prose" id="preview"></div>
+        </div>
+
+        <details class="en-block">
+          <summary>英文正文 posts/en/</summary>
+          <textarea id="editor-en" class="editor-input" rows="10" spellcheck="false" placeholder="English version (optional)"></textarea>
+        </details>
+      </section>
+
+      <section class="actions">
+        <button class="btn primary" id="btn-save">写入文件</button>
+        <button class="btn" id="btn-draft">存草稿</button>
+        <button class="btn" id="btn-download-md">下载 .md</button>
+        <button class="btn" id="btn-download-json">下载 index.json</button>
+        <button class="btn danger" id="btn-delete">删除这篇</button>
+        <span class="tip" id="action-tip"></span>
+      </section>
+    </main>
+  </div>
+
+  <script src="assets/js/markdown.js"></script>
+  <script src="assets/js/site.js"></script>
+  <script src="assets/js/admin.js"></script>
+</body>
+</html>

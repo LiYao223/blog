@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n-title="title.home">空山 · 极简个人志</title>
+  <meta name="description" content="一个人的极简个人志 —— 随想、阅读、技术与生活的留白处。" data-i18n-desc="desc.home">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div id="progress"></div>
+
+  <header class="site-header">
+    <nav>
+      <a href="index.html" class="brand">空山<small>KONGSHAN</small></a>
+      <div class="nav-links">
+        <a href="index.html" class="active" data-i18n="nav.posts">文章</a>
+        <a href="tags.html" data-i18n="nav.tags">标签</a>
+        <a href="about.html" data-i18n="nav.about">关于</a>
+        <button id="lang-toggle" class="lang-toggle" aria-label="切换语言" title="切换语言">EN</button>
+        <button id="theme-toggle" aria-label="切换主题" title="切换主题">☾</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <h1 data-i18n="hero.title">空山</h1>
+      <p class="tagline" data-i18n="hero.tagline">一 个 人 的 极 简 个 人 志</p>
+      <p class="intro" data-i18n="hero.intro">在喧嚣里留一块空地。这里收着随想、阅读、技术与生活——不追热点，只写值得慢读的。</p>
+    </section>
+
+    <div class="wrap">
+      <div class="filters" id="filters"><!-- 标签筛选由 JS 注入 --></div>
+      <div class="post-list" id="post-list">
+        <p class="empty" data-i18n="list.loading">正在载入文章…</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <span data-i18n="footer">空山 · 以静写心 · © 2026</span>
+  </footer>
+
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/markdown.js"></script>
+  <script src="assets/js/site.js"></script>
+  <script src="assets/js/home.js"></script>
+</body>
+</html>
