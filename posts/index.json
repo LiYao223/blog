@@ -27,17 +27,17 @@
   {
     "slug": "silence",
     "title": "读一本不说话的书",
-    "title_en": "Reading a Book That Says Nothing",
     "date": "2026-08-22",
     "tags": [
       "阅读",
       "随笔"
     ],
+    "excerpt": "有些书的价值不在它说了什么，而在它替你留出了一段沉默，让你听见自己的声音。",
+    "title_en": "Reading a Book That Says Nothing",
     "tags_en": [
       "Reading",
       "Essays"
     ],
-    "excerpt": "有些书的价值不在它说了什么，而在它替你留出了一段沉默，让你听见自己的声音。",
     "excerpt_en": "Some books are valuable not for what they say, but for the silence they leave you — long enough to hear your own voice."
   },
   {
