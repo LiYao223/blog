@@ -39,13 +39,14 @@
     const tags = (p.tags || []).map(function (t, i) {
       return '<a class="tag" href="tags.html#' + Site.tagSlug(t) + '">' + displayTag(p, t, i) + '</a>';
     }).join('');
+    /* 外层不能用 <a>: 标签链接会嵌套, 浏览器会把 DOM 拆碎(整卡点击改用事件委托) */
     return (
-      '<a class="post-card reveal" data-tags="' + (p.tags || []).join('|') + '" href="post.html?slug=' + p.slug + '">' +
+      '<article class="post-card reveal" data-tags="' + (p.tags || []).join('|') + '" data-slug="' + p.slug + '">' +
         '<div class="meta"><span>' + Site.formatDate(p.date) + '</span></div>' +
-        '<h2>' + title(p) + '</h2>' +
+        '<h2><a href="post.html?slug=' + p.slug + '">' + title(p) + '</a></h2>' +
         '<p class="excerpt">' + (excerpt(p) || '') + '</p>' +
         '<div class="tags">' + tags + '</div>' +
-      '</a>'
+      '</article>'
     );
   }
 
@@ -106,6 +107,13 @@
   }
 
   function init() {
+    // 整卡点击跳转 (点标签链接除外) —— 替代原先的 <a> 包裹整卡
+    listEl.addEventListener('click', function (ev) {
+      if (ev.target.closest('.tag')) return;
+      const card = ev.target.closest('.post-card');
+      if (card && card.dataset.slug) location.href = 'post.html?slug=' + card.dataset.slug;
+    });
+
     const params = new URLSearchParams(location.search);
     const pre = params.get('tag');
     load()
