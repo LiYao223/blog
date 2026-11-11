@@ -30,7 +30,8 @@
       </ul>
       <div class="side-note">
         <p><strong>怎么写</strong><br>左边改字，右边即时预览。标题、标签这些填在上方表单里，<code>index.json</code> 会自动更新，不用手改。</p>
-        <p><strong>怎么存</strong><br>点「写入文件」后选中 <code>blog</code> 文件夹，浏览器就会直接把文件写回硬盘。Safari / Firefox 不支持时，用「下载」按钮拿回文件手动覆盖。</p>
+        <p><strong>怎么存</strong><br>点「写入文件」直接写回本机硬盘（本地写作服务在线时无需选文件夹）。</p>
+        <p><strong>怎么发布</strong><br>点「发布上线」提交到 GitHub，Pages 约一分钟后自动更新；没改动不会产生空提交。</p>
       </div>
     </aside>
 
@@ -103,6 +104,7 @@
 
       <section class="actions">
         <button class="btn primary" id="btn-save">写入文件</button>
+        <button class="btn" id="btn-publish">发布上线</button>
         <button class="btn" id="btn-draft">存草稿</button>
         <button class="btn" id="btn-download-md">下载 .md</button>
         <button class="btn" id="btn-download-json">下载 index.json</button>

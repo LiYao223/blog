@@ -503,6 +503,29 @@
       newPost();
     });
     $('btn-save').addEventListener('click', saveToDisk);
+
+    /* 发布上线: 由本地写作服务提交到 GitHub Pages */
+    $('btn-publish').addEventListener('click', async function () {
+      if (!state.api) {
+        tip('发布需要本地写作服务：请用 http://127.0.0.1:8080/admin.html 打开。', true);
+        return;
+      }
+      var btn = $('btn-publish');
+      btn.disabled = true;
+      tip('正在提交到 GitHub…');
+      try {
+        var res = await fetch('api/publish', { method: 'POST' });
+        var data = await res.json();
+        if (!res.ok || !data.ok) throw new Error(data.error || ('HTTP ' + res.status));
+        tip(data.changed
+          ? '已提交 ' + data.changed + ' 个文件，Pages 约 1 分钟后更新：' + data.url
+          : '线上已是最新，没有需要发布的改动。');
+      } catch (e) {
+        tip('发布失败：' + e.message, true);
+      } finally {
+        btn.disabled = false;
+      }
+    });
     $('btn-draft').addEventListener('click', function () {
       scheduleDraft();
       tip('草稿已存在本机浏览器里，关掉页面也不会丢。');
