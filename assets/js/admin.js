@@ -388,10 +388,19 @@
         markActive(d.slug);
         setDirty(false);
         tip('已保存到 posts/' + d.slug + '.md（写作服务直写，站点即刻可读）');
+        return;
       } catch (e) {
-        tip('保存失败：' + e.message, true);
+        /* 网络类错误(Load failed / Failed to fetch) = 写作服务可能已被回收 */
+        var netDown = /load failed|failed to fetch|networkerror|network error/i.test(String((e && e.message) || e));
+        if (!netDown) { tip('保存失败：' + e.message, true); return; }
+        state.api = false;
+        markMode();
+        if (!supportsFS()) {
+          tip('写作服务已断开，无法直写。重启服务后刷新页面再试：cd blog && node server.mjs；或点「下载 .md」拿回文件。', true);
+          return;
+        }
+        tip('写作服务已断开，改用文件夹授权保存…');
       }
-      return;
     }
 
     /* 通道 2: File System Access API */
