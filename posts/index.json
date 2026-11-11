@@ -41,20 +41,6 @@
     "excerpt_en": "Some books are valuable not for what they say, but for the silence they leave you — long enough to hear your own voice."
   },
   {
-    "slug": "static-blog",
-    "title": "用纯静态站搭一个博客",
-    "title_en": "Building a Blog With Nothing But Static Files",
-    "date": "2026-08-10",
-    "tags": [
-      "技术"
-    ],
-    "tags_en": [
-      "Craft"
-    ],
-    "excerpt": "零依赖、自包含、丢个 .md 就能发文——一个最小可用的静态博客是怎么搭起来的。",
-    "excerpt_en": "Zero dependencies, self-contained, drop in a .md and publish — how a minimal static blog is put together."
-  },
-  {
     "slug": "perspective",
     "title": "没有真相，只有视角",
     "title_en": "No Truth, Only Perspective",
@@ -69,19 +55,5 @@
     ],
     "excerpt": "我们以为在争论事实，其实常常只是在交换各自站位的视角。视角不是 relativism，是一种清醒。",
     "excerpt_en": "We think we are arguing about facts, when often we are only exchanging the views from where we stand. Perspective is not relativism; it is a form of clarity."
-  },
-  {
-    "slug": "tea",
-    "title": "一杯茶的留白",
-    "title_en": "The White Space in a Cup of Tea",
-    "date": "2026-07-15",
-    "tags": [
-      "生活"
-    ],
-    "tags_en": [
-      "Daily life"
-    ],
-    "excerpt": "泡茶最难的不是放多少茶叶，而是肯不肯等。等水凉到合适的温度，等自己静下来。",
-    "excerpt_en": "The hardest part of making tea is not how much leaf to use, but whether you are willing to wait — for the water to cool, and for yourself to settle."
   }
 ]
