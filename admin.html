@@ -86,6 +86,7 @@
           <button data-act="fence" title="代码块">块</button>
           <span class="sep"></span>
           <button data-act="link" title="链接">链</button>
+          <button data-act="image" title="上传图片并插入">图</button>
           <button data-act="hr" title="分割线">—</button>
           <span class="spacer"></span>
           <span class="counter" id="counter">0 字</span>
@@ -114,8 +115,9 @@
     </main>
   </div>
 
+  <input type="file" id="file-image" accept=".png,.jpg,.jpeg,.gif,.webp,.svg,image/*" hidden>
   <script src="assets/js/markdown.js"></script>
   <script src="assets/js/site.js"></script>
-  <script src="assets/js/admin.js?v=20261112"></script>
+  <script src="assets/js/admin.js?v=20261113"></script>
 </body>
 </html>

@@ -262,6 +262,12 @@
     code: function () { insert('`', '`', 'code'); },
     fence: function () { insert('\n```\n', '\n```\n', '代码'); },
     link: function () { insert('[', '](https://)', '链接文字'); },
+    image: function () {
+      var fi = $('file-image');
+      if (!fi) return;
+      fi.value = '';
+      fi.click();
+    },
     hr: function () { insert('\n\n---\n\n', '', ''); }
   };
 
@@ -272,6 +278,48 @@
       var fn = TOOLS[btn.getAttribute('data-act')];
       if (fn) fn();
     });
+  }
+
+  /* ---------- 图片上传: POST /api/upload -> assets/img/ ---------- */
+  var lastTa = null;
+
+  function insertInto(ta, text) {
+    var s = ta.selectionStart, e = ta.selectionEnd;
+    ta.value = ta.value.slice(0, s) + text + ta.value.slice(e);
+    ta.selectionStart = ta.selectionEnd = s + text.length;
+    ta.focus();
+    update();
+  }
+
+  async function uploadImage(file) {
+    if (!state.api) {
+      tip('插图上传需要本地写作服务：请用 http://127.0.0.1:8080/admin.html 打开。', true);
+      return;
+    }
+    if (!/\.(png|jpg|jpeg|gif|webp|svg)$/i.test(file.name)) {
+      tip('只支持 png / jpg / jpeg / gif / webp / svg 图片', true);
+      return;
+    }
+    if (file.size > 10 * 1024 * 1024) {
+      tip('图片超过 10MB 上限', true);
+      return;
+    }
+    var ext = file.name.slice(file.name.lastIndexOf('.') + 1).toLowerCase();
+    var base = file.name.slice(0, file.name.length - ext.length - 1)
+      .toLowerCase().replace(/[^a-z0-9_-]+/g, '-').replace(/^-+|-+$/g, '') || 'img';
+    var name = (state.slug ? state.slug + '-' : 'img-') + Date.now().toString(36) + '-' + base + '.' + ext;
+    tip('上传图片中…');
+    try {
+      var res = await fetch('api/upload?name=' + encodeURIComponent(name), { method: 'POST', body: file });
+      var data = null;
+      try { data = await res.json(); } catch (e) {}
+      if (!res.ok || !data || !data.ok) throw new Error((data && data.error) || ('HTTP ' + res.status));
+      insertInto(lastTa || $('editor'), '![' + base + '](' + data.path + ')');
+      tip('图片已上传到 ' + data.path + '，「写入文件」后随文章一起发布。');
+    } catch (e) {
+      var netDown = /load failed|failed to fetch|networkerror|network error/i.test(String((e && e.message) || e));
+      tip(netDown ? '图片上传失败：写作服务不在线，请重启服务后重试。' : '图片上传失败：' + e.message, true);
+    }
   }
 
   /* ---------- 保存通道 1: 本地写作服务 API ---------- */
@@ -520,6 +568,17 @@
   function bind() {
     ['f-title', 'f-slug', 'f-date', 'f-tags', 'f-excerpt', 'f-title-en', 'f-tags-en', 'f-excerpt-en', 'editor', 'editor-en']
       .forEach(function (id) { $(id).addEventListener('input', update); });
+
+    /* 记住光标最后落在哪个编辑器, 图片语法插到那里 */
+    lastTa = $('editor');
+    ['editor', 'editor-en'].forEach(function (id) {
+      $(id).addEventListener('focus', function () { lastTa = $(id); });
+    });
+
+    $('file-image').addEventListener('change', function () {
+      var f = this.files && this.files[0];
+      if (f) uploadImage(f);
+    });
 
     bindToolbar();
     $('btn-new').addEventListener('click', function () {
